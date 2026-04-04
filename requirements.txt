@@ -1,4 +1,0 @@
-streamlit>=1.32.0
-requests>=2.31.0
-# No heavy AI SDKs needed — all providers called via raw HTTP
-# This keeps the app lightweight and avoids SDK version conflicts
