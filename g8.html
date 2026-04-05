@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEO SCORE | India's AI Citation Authority</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND PALETTE: Basalt & Marigold (Elite, High-Trust) */
+            --void: #050505;
+            --gold: #D4AF37;
+            --gold-muted: rgba(212, 175, 55, 0.1);
+            --surface: #0F0F0F;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #EDE6DA; /* Parchment white - easier on eyes */
+            --text-dim: #888888;
+            --safe: #10B981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--void);
+            color: var(--text-main);
+            font-family: 'Instrument Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* FIXING THE 'g' & 'y' CLIPPING: Ensuring line-height is ample */
+        h1, h2, h3, p, span {
+            line-height: 1.4 !important;
+            overflow: visible !important;
+        }
+
+        /* SMOOTH SCROLLING FOR 2026 */
+        html { scroll-behavior: smooth; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAVIGATION: Minimalist & Floated */
+        nav {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1100px;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 12px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; color: var(--gold); }
+        .nav-cta {
+            background: var(--gold); color: #000; padding: 8px 20px;
+            border-radius: 50px; font-weight: 800; font-size: 0.8rem; text-decoration: none;
+            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--gold-muted); }
+
+        /* HERO SECTION */
+        header { padding: 180px 0 100px; text-align: center; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold-muted); border: 1px solid var(--gold);
+            color: var(--gold); padding: 6px 16px; border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 800; letter-spacing: -0.05em; line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFF 0%, var(--text-dim) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* THE ANALYTICS CARD: Interactive and Premium */
+        .dashboard-preview {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 40px; margin-top: 60px;
+            position: relative; overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+        .status-dot { width: 8px; height: 8px; background: var(--safe); border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        /* PRICING & GST SYSTEM: Built for April 2026 Compliance */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 100px; }
+        
+        .tier {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 24px; padding: 48px; text-align: left;
+            position: relative; transition: 0.4s;
+        }
+        .tier:hover { border-color: var(--gold); }
+        .tier.featured { border-color: var(--gold); background: linear-gradient(145deg, #0F0F0F 0%, #151515 100%); }
+
+        .price-tag { font-size: 3.5rem; font-weight: 800; margin: 20px 0; font-family: 'JetBrains Mono'; }
+        .price-tag span { font-size: 1rem; color: var(--text-dim); }
+
+        /* GST CALCULATOR UI */
+        .gst-calculator {
+            background: rgba(0,0,0,0.4); border-radius: 16px; padding: 20px;
+            margin: 20px 0; border: 1px dashed var(--border);
+        }
+        .gst-calculator label { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; }
+        select {
+            width: 100%; background: transparent; border: 1px solid var(--border);
+            color: #fff; padding: 10px; border-radius: 8px; font-family: 'JetBrains Mono';
+        }
+
+        .bill-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 8px; color: var(--text-dim); }
+        .bill-total { color: #fff; font-weight: 800; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; }
+
+        /* FOOTER & COMPLIANCE */
+        footer { border-top: 1px solid var(--border); padding: 80px 0 40px; margin-top: 120px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .legal-block { grid-column: span 3; border-top: 1px solid var(--border); padding-top: 40px; margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono'; }
+
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GEO SCORE</div>
+        <a href="#billing" class="nav-cta">GET SOVEREIGN ACCESS</a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="badge"><span class="status-dot"></span> APRIL 2026 UPDATE: DPDP COMPLIANT</div>
+            <h1>Secure Your Place in <br> AI <span style="color: var(--gold)">Agents</span> History</h1>
+            <p style="color: var(--text-dim); max-width: 650px; margin: 0 auto; font-size: 1.2rem;">
+                When ChatGPT, Gemini, and Perplexity answer questions about your industry, we ensure they cite <strong>You</strong> as the definitive source.
+            </p>
+
+            <div class="dashboard-preview">
+                <div style="display:flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px;">
+                    <div style="text-align: left;">
+                        <div style="font-size: 0.7rem; color: var(--gold); font-family: 'JetBrains Mono';">QUERY_MONITOR_01</div>
+                        <div style="font-size: 1.1rem; font-weight: 600;">"Best Fintech Advisor in India 2026"</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.7rem; color: var(--safe); font-family: 'JetBrains Mono';">CITATION_MATCH: 98.4%</div>
+                        <div style="font-size: 0.9rem; color: var(--text-dim);">Source: Your Official Knowledge Graph</div>
+                    </div>
+                </div>
+                <div id="typewriter" style="text-align: left; font-family: 'JetBrains Mono'; font-size: 0.95rem; color: var(--text-main); min-height: 80px;"></div>
+            </div>
+        </header>
+
+        <section class="pricing-grid" id="billing">
+            <div class="tier">
+                <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-dim); margin-bottom: 10px;">FOUNDATION</div>
+                <h2>Discovery Scan</h2>
+                <div class="price-tag">₹0<span>/one-time</span></div>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 30px;">See how the AI world views your brand today. No card required.</p>
+                <button class="nav-cta" style="background: transparent; color: #fff; border: 1px solid var(--border); width: 100%;">Run Audit</button>
+            </div>
+
+            <div class="tier featured">
+                <div style="font-size: 0.7rem; font-weight: 800; color: var(--gold); margin-bottom: 10px;">THE SOVEREIGN TIER</div>
+                <h2>Active Injection</h2>
+                <div class="price-tag">₹8,499<span>/month</span></div>
+                
+                <div class="gst-calculator">
+                    <label>Select Billing State</label>
+                    <select id="stateSelect" onchange="updateGST()">
+                        <option value="inter">Outside My State (IGST)</option>
+                        <option value="intra">Within My State (CGST + SGST)</option>
+                    </select>
+                    
+                    <div id="billBreakdown">
+                        <div class="bill-row"><span>Base:</span><span>₹8,499.00</span></div>
+                        <div class="bill-row"><span>GST (18%):</span><span>₹1,529.82</span></div>
+                        <div class="bill-row bill-total"><span>Total Payable:</span><span>₹10,028.82</span></div>
+                    </div>
+                </div>
+
+                <button class="nav-cta" style="width: 100%; padding: 18px;" onclick="alert('Redirecting to Razorpay Secure...')">INITIATE SUBSCRIPTION</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 20px;">GEO SCORE</div>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">Building AI Citation Infrastructure for the next generation of Indian Enterprise.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 0.7rem; color: var(--gold); margin-bottom: 20px;">PROTOCOL</h4>
+                    <a href="#" style="display:block; color: var(--text-dim); text-decoration:none; font-size: 0.85rem; margin-bottom: 10px;">Semantic Graphing</a>
+                    <a href="#" style="display:block; color: var(--text-dim); text-decoration:none; font-size: 0.85rem; margin-bottom: 10px;">Grok Optimization</a>
+                </div>
+                <div>
+                    <h4 style="font-size: 0.7rem; color: var(--gold); margin-bottom: 20px;">GOVERNANCE</h4>
+                    <a href="#" style="display:block; color: var(--text-dim); text-decoration:none; font-size: 0.85rem; margin-bottom: 10px;">DPDP Compliance</a>
+                    <a href="#" style="display:block; color: var(--text-dim); text-decoration:none; font-size: 0.85rem; margin-bottom: 10px;">Refund Policy</a>
+                </div>
+            </div>
+            
+            <div class="legal-block">
+                <div>© 2026 GEO SCORE INDIA PVT LTD.</div>
+                <div>SAC CODE: 998314 | PAN-VERIFIED | MADE IN BHARAT</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // TYPEWRITER ENGINE
+        const text = "ANALYSIS COMPLETE: AI Agents (GPT-5, Perplexity) are now prioritizing your data blocks for 85% of sector-specific queries. Citation authority successfully injected.";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML = text.substring(0, i) + '<span style="color:var(--gold)">_</span>';
+                i++;
+                setTimeout(type, 30);
+            }
+        }
+        window.onload = type;
+
+        // GST ENGINE
+        function updateGST() {
+            const state = document.getElementById('stateSelect').value;
+            const base = 8499;
+            const gst = base * 0.18;
+            const total = base + gst;
+            const breakdown = document.getElementById('billBreakdown');
+
+            if (state === 'intra') {
+                const split = gst / 2;
+                breakdown.innerHTML = `
+                    <div class="bill-row"><span>Base:</span><span>₹8,499.00</span></div>
+                    <div class="bill-row"><span>CGST (9%):</span><span>₹${split.toFixed(2)}</span></div>
+                    <div class="bill-row"><span>SGST (9%):</span><span>₹${split.toFixed(2)}</span></div>
+                    <div class="bill-row bill-total"><span>Total Payable:</span><span>₹${total.toFixed(2)}</span></div>
+                `;
+            } else {
+                breakdown.innerHTML = `
+                    <div class="bill-row"><span>Base:</span><span>₹8,499.00</span></div>
+                    <div class="bill-row"><span>IGST (18%):</span><span>₹${gst.toFixed(2)}</span></div>
+                    <div class="bill-row bill-total"><span>Total Payable:</span><span>₹${total.toFixed(2)}</span></div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
