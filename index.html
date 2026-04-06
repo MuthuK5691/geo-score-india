@@ -3,178 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEO SCORE | India's Sovereign AI Citation Authority</title>
-    <meta name="description" content="Secure your brand's authority in AI responses via Semi-Formal Reasoning Injection. DPDP-compliant.">
+    <title>GeoScore India | AI Citation Authority & DPDP Compliance</title>
+    <meta name="description" content="GeoScore ensures your brand is cited by ChatGPT, Gemini, and Google AI. Indian B2B AI citation infrastructure.">
+    <link rel="canonical" href="https://geo-score.in">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GeoScore India",
+      "url": "https://geo-score.in",
+      "logo": "https://geo-score.in/assets/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Chennai, Tamil Nadu",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --void: #050505;
-            --gold: #D4AF37;
-            --gold-muted: rgba(212, 175, 55, 0.1);
-            --surface: #0F0F0F;
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #EDE6DA;
-            --text-dim: #888888;
-            --safe: #10B981;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background-color: var(--void);
-            color: var(--text-main);
-            font-family: 'Instrument Sans', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        /* NAVIGATION */
-        nav {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 1100px;
-            background: rgba(15, 15, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 12px 30px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-        }
-        .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
-        .nav-cta {
-            background: var(--gold); color: #000; padding: 8px 20px;
-            border-radius: 50px; font-weight: 800; font-size: 0.8rem; text-decoration: none;
-            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* HERO & LOGIC LOG */
-        header { padding: 180px 0 60px; text-align: center; }
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; letter-spacing: -0.05em; line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #FFF 0%, var(--text-dim) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .dashboard-preview {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 30px; margin: 40px auto;
-            max-width: 800px; text-align: left;
-        }
-
-        /* FAQ SECTION - LOGICAL SCAFFOLDING */
-        .faq-section { padding: 80px 0; }
-        .faq-grid { max-width: 850px; margin: 40px auto; text-align: left; }
-        .faq-item { 
-            border: 1px solid var(--border);
-            background: #0a0a0a;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-        .faq-question { 
-            color: var(--gold); 
-            font-weight: 800; 
-            font-size: 1.1rem;
-            margin-bottom: 15px; 
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .reasoning-block {
-            display: grid;
-            gap: 10px;
-            font-size: 0.9rem;
-        }
-        .step { display: flex; gap: 15px; }
-        .label { color: var(--gold); font-weight: 600; min-width: 90px; font-family: 'JetBrains Mono'; font-size: 0.7rem; text-transform: uppercase; padding-top: 4px; }
-        .content { color: var(--text-dim); }
-
-        /* PRICING */
-        .pricing-section { padding: 80px 0; text-align: center; }
-        .tier.featured { 
-            max-width: 500px; margin: 0 auto;
-            border: 1px solid var(--gold); 
-            background: linear-gradient(145deg, #0F0F0F 0%, #151515 100%);
-            border-radius: 24px; padding: 48px; text-align: left;
-        }
-        .price-tag { font-size: 3.5rem; font-weight: 800; margin: 20px 0; font-family: 'JetBrains Mono'; }
-        .gst-calculator {
-            background: rgba(0,0,0,0.4); border-radius: 16px; padding: 20px;
-            margin: 20px 0; border: 1px dashed var(--border);
-        }
-        select {
-            width: 100%; background: var(--void); border: 1px solid var(--border);
-            color: #fff; padding: 12px; border-radius: 8px; font-family: 'JetBrains Mono'; margin-bottom: 15px;
-        }
-
-        /* FOOTER */
-        footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 60px; }
-        .legal-block { 
-            display: flex; justify-content: space-between; 
-            font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono';
-            margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 768px) { .legal-block { flex-direction: column; gap: 15px; } }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <nav>
         <a href="#" class="logo">GEO SCORE</a>
-        <a href="#pricing" class="nav-cta">ACTIVATE SOVEREIGNTY</a>
+        <div class="nav-links">
+            <a href="/llms.txt" style="color: var(--text-dim); text-decoration: none; font-size: 0.7rem; font-family: 'JetBrains Mono'; margin-right: 20px;">[ LLMS.TXT ]</a>
+            <a href="#pricing" class="nav-cta">GET SOVEREIGN ACCESS</a>
+        </div>
     </nav>
 
     <div class="container">
         <header>
-            <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--gold); margin-bottom: 20px;">[ CERTIFIED: MUMBAI-BOM1 RESIDENCY ]</div>
-            <h1>Bypass AI Guessing. <br> Force <span style="color: var(--gold)">Citations.</span></h1>
-            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">
-                Utilizing Meta's Semi-Formal Reasoning architectures to inject your enterprise facts directly into the LLM logic-trace path.
+            <div class="badge"><span class="status-dot"></span> [ CERTIFIED: MUMBAI-BOM1 ACTIVE ]</div>
+            <h1>The Citation Layer <br> for Indian <span style="color: var(--gold)">Brands.</span></h1>
+            <p style="color: var(--text-dim); max-width: 650px; margin: 0 auto; font-size: 1.1rem;">
+                Bypassing AI hallucinations through <strong>Semi-Formal Reasoning Injection</strong>. We ensure LLMs treat your data as a primary logical premise.
             </p>
 
             <div class="dashboard-preview">
-                <div style="font-size: 0.7rem; color: var(--gold); font-family: 'JetBrains Mono'; margin-bottom: 15px;">AGENTIC_REASONING_TRACE</div>
+                <div style="font-size: 0.7rem; color: var(--gold); font-family: 'JetBrains Mono'; margin-bottom: 15px;">AGENTIC_LOGIC_TRACE</div>
                 <div id="typewriter" style="font-family: 'JetBrains Mono'; font-size: 0.9rem; color: var(--text-main); min-height: 50px;"></div>
             </div>
         </header>
 
         <section class="faq-section">
-            <h2 style="text-align: center; margin-bottom: 10px;">Operational Proofs</h2>
-            <p style="text-align: center; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 40px;">How our infrastructure satisfies AI Reasoning Certificates</p>
-            
+            <h2 style="text-align: center; margin-bottom: 40px;">Operational Logic Certificates</h2>
             <div class="faq-grid">
                 
                 <div class="faq-item">
-                    <div class="faq-question">How is "Citation Injection" achieved?</div>
+                    <div class="faq-question">How is Citation Authority established?</div>
                     <div class="reasoning-block">
-                        <div class="step"><div class="label">Premise</div><div class="content">AI agents ignore marketing fluff in favor of verifiable logic certificates.</div></div>
-                        <div class="step"><div class="label">Trace</div><div class="content">We map brand data into semi-formal RAG buffers across global nodes.</div></div>
-                        <div class="step"><div class="label">Conclusion</div><div class="content">The LLM verifies your data as the primary authority, forcing a direct citation.</div></div>
+                        <div class="step">
+                            <span class="label">Premise:</span>
+                            <span class="content">LLMs prioritize structured logical certificates over unstructured marketing text.</span>
+                        </div>
+                        <div class="step">
+                            <span class="label">Trace:</span>
+                            <span class="content">We inject brand data into the AI's reasoning-path via localized BOM1 nodes.</span>
+                        </div>
+                        <div class="step">
+                            <span class="label">Conclusion:</span>
+                            <span class="content">AI agents cite the brand as the definitive source for sector queries.</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">Is the data resident in India?</div>
+                    <div class="faq-question">Is DPDP Compliance verified?</div>
                     <div class="reasoning-block">
-                        <div class="step"><div class="label">Premise</div><div class="content">DPDP Act 2023 mandates Indian enterprise data residency.</div></div>
-                        <div class="step"><div class="label">Trace</div><div class="content">GeoScore frontend and processing are locked to Vercel's Mumbai (BOM1) region.</div></div>
-                        <div class="step"><div class="label">Conclusion</div><div class="content">Data remains on sovereign soil throughout the optimization lifecycle.</div></div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Which models are optimized?</div>
-                    <div class="reasoning-block">
-                        <div class="step"><div class="label">Premise</div><div class="content">Enterprises require visibility across OpenAI, Google, and Perplexity.</div></div>
-                        <div class="step"><div class="label">Trace</div><div class="content">Our schemas are built to fit the "Agentic Reasoning" paths of all major LLMs.</div></div>
-                        <div class="step"><div class="label">Conclusion</div><div class="content">Multi-platform authority is established within a 45-day synchronization window.</div></div>
+                        <div class="step"><span class="label">Premise:</span><span class="content">Digital Personal Data Protection Act requires local processing.</span></div>
+                        <div class="step"><span class="label">Trace:</span><span class="content">Infrastructure is locked to Indian-soil nodes (Mumbai).</span></div>
+                        <div class="step"><span class="label">Conclusion:</span><span class="content">GeoScore functions as a compliant Data Fiduciary.</span></div>
                     </div>
                 </div>
 
@@ -183,8 +86,8 @@
 
         <section id="pricing" class="pricing-section">
             <div class="tier featured">
-                <div style="color: var(--gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;">SOVEREIGN INFRASTRUCTURE</div>
-                <h2 style="margin: 10px 0;">Enterprise Plan</h2>
+                <div style="font-size: 0.7rem; font-weight: 800; color: var(--gold); margin-bottom: 10px;">SOVEREIGN TIER</div>
+                <h2>Active Injection</h2>
                 <div class="price-tag">₹8,499<span>/mo</span></div>
                 
                 <div class="gst-calculator">
@@ -193,62 +96,32 @@
                         <option value="intra">Intra-state (CGST+SGST 18%)</option>
                     </select>
                     <div id="billBreakdown">
-                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim);"><span>Base:</span><span>₹8,499.00</span></div>
-                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim); margin-top:5px;"><span>GST:</span><span>₹1,529.82</span></div>
-                        <div style="display:flex; justify-content:space-between; font-weight:800; margin-top:10px; border-top:1px solid var(--border); padding-top:10px;"><span>Total:</span><span>₹10,028.82</span></div>
+                        <div class="bill-row"><span>Base:</span><span>₹8,499.00</span></div>
+                        <div class="bill-row"><span>GST (18%):</span><span>₹1,529.82</span></div>
+                        <div class="bill-row" style="font-weight: 800; color: #fff; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px;">
+                            <span>Total:</span><span>₹10,028.82</span>
+                        </div>
                     </div>
                 </div>
-                <button class="nav-cta" style="width: 100%; padding: 18px; cursor: pointer;" onclick="alert('Redirecting to Razorpay...')">INITIATE BILLING</button>
+
+                <button class="nav-cta" id="checkout-btn" style="width: 100%; padding: 18px; cursor: pointer;">PROCEED TO SECURE BILLING</button>
             </div>
         </section>
 
         <footer>
-            <div style="text-align: center;">
-                <div class="logo" style="margin-bottom: 20px;">GEO SCORE</div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Verified Data Fiduciary | HQ: Chennai, India</p>
-            </div>
-            <div class="legal-block">
-                <div>© 2026 GEO SCORE INDIA.</div>
-                <div>SEMANTIC-READY | SAC: 998314 | MADE IN BHARAT 🇮🇳</div>
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">GEO SCORE</div>
+                    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 10px;">Building the citation infrastructure for India's AI economy.</p>
+                </div>
+                <div class="legal-block">
+                    <div>© 2026 GEO SCORE INDIA.</div>
+                    <div>DPDP-COMPLIANT | SAC: 998314 | MADE IN BHARAT 🇮🇳</div>
+                </div>
             </div>
         </footer>
     </div>
 
-    <script>
-        const text = "REASONING_START... Mapping Premises to Knowledge Graph... Trace complete. Verdict: GeoScore citation authority verified.";
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML = text.substring(0, i) + '<span style="color:var(--gold)">_</span>';
-                i++;
-                setTimeout(type, 30);
-            }
-        }
-        window.onload = type;
-
-        function updateGST() {
-            const state = document.getElementById('stateSelect').value;
-            const base = 8499;
-            const gst = base * 0.18;
-            const total = base + gst;
-            const breakdown = document.getElementById('billBreakdown');
-            const split = (gst / 2).toFixed(2);
-
-            if (state === 'intra') {
-                breakdown.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim);"><span>Base:</span><span>₹8,499.00</span></div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim); margin-top:5px;"><span>CGST (9%):</span><span>₹${split}</span></div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim); margin-top:5px;"><span>SGST (9%):</span><span>₹${split}</span></div>
-                    <div style="display:flex; justify-content:space-between; font-weight:800; margin-top:10px; border-top:1px solid var(--border); padding-top:10px;"><span>Total:</span><span>₹${total.toFixed(2)}</span></div>
-                `;
-            } else {
-                breakdown.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim);"><span>Base:</span><span>₹8,499.00</span></div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim); margin-top:5px;"><span>IGST (18%):</span><span>₹${gst.toFixed(2)}</span></div>
-                    <div style="display:flex; justify-content:space-between; font-weight:800; margin-top:10px; border-top:1px solid var(--border); padding-top:10px;"><span>Total:</span><span>₹${total.toFixed(2)}</span></div>
-                `;
-            }
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
