@@ -4,21 +4,12 @@
   "framework": null,
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
+    { "src": "success.html", "use": "@vercel/static" },
     { "src": "css/*.css", "use": "@vercel/static" },
-    { "src": "js/*.js", "use": "@vercel/static" },
-    { "src": "assets/**", "use": "@vercel/static" }
+    { "src": "js/*.js", "use": "@vercel/static" }
   ],
   "routes": [
-    { "handle": "filesystem" },
+    { "src": "/success", "dest": "/success.html" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
-      ]
-    }
   ]
 }
