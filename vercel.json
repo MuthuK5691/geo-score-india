@@ -1,6 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "regions": ["bom1"],
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
   ]
