@@ -13,7 +13,6 @@ body {
     font-family: 'Instrument Sans', sans-serif;
     margin: 0;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
 }
 
 header nav {
@@ -31,73 +30,80 @@ header nav {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-weight: bold;
+    transition: 0.3s;
 }
 
+.whatsapp-btn:hover { background: rgba(37, 211, 102, 0.1); }
+
 .hero {
-    padding: 100px 5%;
+    padding: 120px 5%;
     text-align: center;
     max-width: 900px;
     margin: 0 auto;
 }
 
-#hero-title { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 20px; }
+#hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; font-weight: 700; }
 
-.trust-badge {
+.badge {
     display: inline-block;
     border: 1px solid var(--gold);
     color: var(--gold);
-    padding: 5px 15px;
-    font-size: 0.75rem;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 50px;
     letter-spacing: 1px;
-    border-radius: 20px;
 }
 
 .pricing {
     background: var(--card);
-    margin: 50px 5%;
-    padding: 60px 20px;
-    border-radius: 15px;
+    margin: 60px 5%;
+    padding: 80px 20px;
+    border-radius: 20px;
     border: 1px solid var(--border);
     text-align: center;
 }
 
-.price-display { font-size: 4rem; font-weight: 800; margin: 20px 0; }
-.price-display small { font-size: 1rem; color: var(--gray); }
+.price-display { font-size: clamp(3rem, 10vw, 4.5rem); font-weight: 800; margin: 24px 0; }
+.price-display small { font-size: 1.1rem; color: var(--gray); font-weight: 400; }
 
 .cta-main, .btn-submit {
     background: var(--gold);
     color: #000;
     border: none;
-    padding: 1.2rem 2.5rem;
+    padding: 1.4rem 3rem;
     font-weight: 800;
     cursor: pointer;
-    border-radius: 4px;
-    transition: transform 0.2s;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: 0.2s transform;
 }
 
-.cta-main:hover { transform: scale(1.02); }
+.cta-main:hover { transform: translateY(-3px); }
 
 .modern-form {
-    max-width: 600px;
-    margin: 0 auto 100px;
+    max-width: 700px;
+    margin: 0 auto 120px;
     background: var(--card);
-    padding: 40px;
-    border-radius: 12px;
+    padding: 50px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
 }
 
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-.input-group label { display: block; color: var(--gold); font-size: 0.8rem; margin-bottom: 5px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+.input-group label { display: block; color: var(--gold); font-size: 0.85rem; margin-bottom: 8px; font-weight: 600; }
 .input-group input {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #000;
     border: 1px solid var(--border);
     color: #fff;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.consent-block { display: flex; gap: 10px; font-size: 0.8rem; color: var(--gray); margin: 20px 0; }
+.consent-block { display: flex; gap: 12px; font-size: 0.85rem; color: var(--gray); margin: 25px 0; align-items: flex-start; }
 
-footer { padding: 60px 5%; border-top: 1px solid var(--border); text-align: center; color: var(--gray); }
+footer { padding: 80px 5%; border-top: 1px solid var(--border); text-align: center; color: var(--gray); }
 
-@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
