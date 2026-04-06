@@ -1,0 +1,66 @@
+:root {
+    --bg-color: #050505;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0; /* Improved contrast from #888 */
+    --accent: #007bff;
+    --border: #222;
+    --font-main: 'Instrument Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility: Focus States */
+a:focus, button:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Component Classes */
+.pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 40px 20px;
+    margin-bottom: 20px;
+}
+
+.price-container {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.tax-suffix {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-left: 8px;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.whatsapp-link {
+    color: #25D366;
+    text-decoration: none;
+    font-weight: bold;
+}
