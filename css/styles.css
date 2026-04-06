@@ -1,7 +1,9 @@
+/* 1. GLOBAL VARIABLES & RESET */
 :root {
     --bg-dark: #050505;
+    --card-bg: #111;
     --text-main: #FFFFFF;
-    --text-muted: #B0B0B0; /* Better contrast than #888 */
+    --text-muted: #B0B0B0;
     --accent-gold: #D4AF37;
     --border-color: #222;
     --success-green: #25D366;
@@ -15,15 +17,27 @@ body {
     line-height: 1.6;
 }
 
-/* Accessibility: Focus States */
+/* 2. SHARED UTILITIES & ACCESSIBILITY */
 a:focus, button:focus {
     outline: 2px solid var(--accent-gold);
     outline-offset: 4px;
 }
 
+.badge-accent {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: #000;
+    padding: 4px 12px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+/* 3. HEADER & NAVIGATION */
 header nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.5rem 5%;
     border-bottom: 1px solid var(--border-color);
 }
@@ -35,24 +49,39 @@ header nav {
     border: 1px solid var(--success-green);
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    transition: background 0.3s;
 }
 
+.whatsapp-btn:hover {
+    background: rgba(37, 211, 102, 0.1);
+}
+
+/* 4. HERO SECTION */
 .hero {
     padding: 100px 5%;
     max-width: 900px;
+    margin: 0 auto;
 }
 
+#hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* 5. PRICING & SUBSCRIPTION */
 .pricing {
     border: 1px solid var(--border-color);
     padding: 3rem;
     text-align: center;
     border-radius: 12px;
     margin: 2rem 5%;
+    background: var(--card-bg);
 }
 
 .price-display {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
+    margin: 20px 0;
 }
 
 .tax-note {
@@ -67,5 +96,113 @@ header nav {
     padding: 1.2rem 2.5rem;
     font-weight: 700;
     cursor: pointer;
-    transition: opacity 0.2s;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.cta-main:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 6. MODERN FORM STYLES (DEMO REQUEST) */
+.demo-request {
+    padding: 100px 5%;
+    background: #0a0a0a;
+}
+
+.modern-form {
+    max-width: 700px;
+    margin: 40px auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 600px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-dark);
+    border: 1px solid #333;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.consent-block {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent-gold);
+    color: #000;
+    font-weight: 800;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* 7. LEGAL CONTENT STYLES */
+.legal-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.legal-content h2 {
+    margin-top: 40px;
+    color: var(--accent-gold);
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 15px;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* 8. FOOTER STYLES */
+footer {
+    padding: 40px 5%;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
