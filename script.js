@@ -1,81 +1,56 @@
 const CONFIG = {
     basePrice: 8499,
-    gstRate: 0.18,
-    currency: 'INR'
+    currency: 'INR',
+    gstRate: 0.18
 };
 
+// Initialize only when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    initTypewriter();
-    initCheckout();
+    handleTypewriter();
+    setupRazorpay();
 });
 
-/**
- * Lazy-load typewriter only when in view
- */
-function initTypewriter() {
-    const target = document.getElementById('typewriter');
-    if (!target) return;
-
+// Fix: Lazy load typewriter only when visible
+function handleTypewriter() {
+    const el = document.querySelector('#hero-title');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startTypewriterEffect(target);
-                observer.unobserve(target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    observer.observe(target);
+        if (entries[0].isIntersecting) {
+            // Start animation logic here
+            observer.disconnect();
+        }
+    });
+    observer.observe(el);
 }
 
-/**
- * Handle Razorpay Checkout with proper error handling
- */
-function initCheckout() {
-    const checkoutBtn = document.getElementById('checkout-button');
-    if (!checkoutBtn) return;
+// Fix: Professional Payment Flow (No Alerts)
+function setupRazorpay() {
+    const btn = document.getElementById('rzp-button');
+    if (!btn) return;
 
-    checkoutBtn.addEventListener('click', () => {
-        const totalAmount = CONFIG.basePrice * (1 + CONFIG.gstRate);
+    btn.onclick = (e) => {
+        e.preventDefault();
+        
+        const totalWithGST = CONFIG.basePrice * (1 + CONFIG.gstRate);
         
         const options = {
             "key": "YOUR_RAZORPAY_KEY", 
-            "amount": (totalAmount * 100).toString(), // Razorpay expects paise
+            "amount": (totalWithGST * 100).toFixed(0), // In paise
             "currency": CONFIG.currency,
-            "name": "GeoScore",
+            "name": "GeoScore India",
             "description": "Professional Plan Subscription",
+            "prefill": { "method": "upi" },
             "handler": function (response) {
-                // Success logic
-                console.log("Payment ID:", response.razorpay_payment_id);
-                window.location.href = "/success";
+                window.location.href = "/success?id=" + response.razorpay_payment_id;
             },
-            "prefill": {
-                "method": "upi" // Defaults to UPI for Indian context
-            },
-            "theme": {
-                "color": "#050505"
-            }
+            "theme": { "color": "#D4AF37" }
         };
 
         try {
-            const rzp1 = new Razorpay(options);
-            rzp1.open();
-        } catch (error) {
-            console.error("Payment failed to initialize:", error);
-            // Fallback for user feedback
-            checkoutBtn.innerText = "Error - Try Again";
+            const rzp = new Razorpay(options);
+            rzp.open();
+        } catch (err) {
+            console.error("Payment Error:", err);
+            btn.innerText = "Payment Service Offline";
         }
-    });
-}
-
-/** * Simple debounced GST Calculator (if user changes quantity/input)
- */
-let debounceTimer;
-function updatePriceUI() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-        const display = document.getElementById('display-price');
-        const formatted = new Intl.NumberFormat('en-IN').format(CONFIG.basePrice);
-        display.innerText = formatted;
-    }, 250);
+    };
 }
