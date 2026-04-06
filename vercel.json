@@ -1,15 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "framework": null,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "success.html", "use": "@vercel/static" },
-    { "src": "css/*.css", "use": "@vercel/static" },
-    { "src": "js/*.js", "use": "@vercel/static" }
-  ],
   "routes": [
-    { "src": "/success", "dest": "/success.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
