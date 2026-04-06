@@ -1,7 +1,6 @@
 /**
  * GEOSCORE INDIA - Core Site Logic (April 2026)
- * Handles: Razorpay Integration, Performance-Optimized Typewriter, 
- * Intersection Observers, and DPDP Consent Logic.
+ * Combined Logic for Payments, Animations, and DPDP Compliance.
  */
 
 const PRICING_CONFIG = {
@@ -14,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initRazorpay();
     initTypewriter();
     initSmoothScroll();
+    initDemoForm(); // Handles the Contact/Demo form submission
 });
 
 /**
  * 1. RAZORPAY PAYMENT INTEGRATION
- * Redirects to /success.html upon verified transaction.
  */
 function initRazorpay() {
     const btn = document.getElementById('checkout-btn');
@@ -45,11 +44,6 @@ function initRazorpay() {
                 // Success: Redirect to premium success page
                 window.location.href = `/success.html?payment_id=${response.razorpay_payment_id}`;
             },
-            "modal": {
-                "ondismiss": function() {
-                    console.log('Payment window closed by user.');
-                }
-            },
             "theme": {
                 "color": "#D4AF37" // Matches Gold Accent
             }
@@ -62,7 +56,7 @@ function initRazorpay() {
 
 /**
  * 2. PERFORMANCE-OPTIMIZED TYPEWRITER
- * Uses IntersectionObserver to only run when the user is looking at the hero.
+ * Runs only when the user scrolls to the hero title.
  */
 function initTypewriter() {
     const target = document.querySelector('#hero-title');
@@ -73,24 +67,20 @@ function initTypewriter() {
 
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-            typeEffect(target, textToType);
+            let i = 0;
+            function type() {
+                if (i < textToType.length) {
+                    target.innerHTML += textToType.charAt(i);
+                    i++;
+                    setTimeout(type, 60);
+                }
+            }
+            type();
             observer.disconnect(); // Run once
         }
     }, { threshold: 0.5 });
 
     observer.observe(target);
-}
-
-function typeEffect(element, text, speed = 60) {
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
 }
 
 /**
@@ -102,24 +92,64 @@ function initSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 }
 
 /**
- * 4. DPDP CONSENT VALIDATION (For Demo Form)
+ * 4. DEMO FORM SUBMISSION & DPDP CONSENT
  */
-const demoForm = document.getElementById('demo-form');
-if (demoForm) {
-    demoForm.addEventListener('submit', function(e) {
+function initDemoForm() {
+    const form = document.getElementById('demo-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const status = document.getElementById('form-status');
+        const btn = form.querySelector('.btn-submit');
         const consentCheckbox = document.getElementById('dpdp-consent');
+
+        // 1. DPDP Compliance Check
         if (consentCheckbox && !consentCheckbox.checked) {
-            e.preventDefault();
-            alert("DPDP Compliance: You must provide consent to process your business data.");
+            status.innerHTML = '<p class="status-error">Explicit consent is required under DPDP Act.</p>';
+            return;
+        }
+
+        // 2. Prepare Data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Metadata for Consent Logs
+        data.consentTimestamp = new Date().toISOString();
+        data.sourceUrl = window.location.href;
+        data.consentText = "Notice-and-Consent for AI Citation Services";
+
+        // 3. UI Feedback
+        btn.disabled = true;
+        btn.innerText = "SENDING...";
+
+        try {
+            // Replace with your Formspree URL
+            const response = await fetch('https://formspree.io/f/your-id', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+            });
+
+            if (response.ok) {
+                status.innerHTML = '<p class="status-success">✓ Request received. We will contact you within 24 hours.</p>';
+                form.reset();
+                btn.innerText = "REQUEST SENT";
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (err) {
+            status.innerHTML = '<p class="status-error">Submission error. Please try again or contact support.</p>';
+            btn.disabled = false;
+            btn.innerText = "RETRY REQUEST";
         }
     });
 }
