@@ -1,0 +1,71 @@
+:root {
+    --bg-dark: #050505;
+    --text-main: #FFFFFF;
+    --text-muted: #B0B0B0; /* Better contrast than #888 */
+    --accent-gold: #D4AF37;
+    --border-color: #222;
+    --success-green: #25D366;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Accessibility: Focus States */
+a:focus, button:focus {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.whatsapp-btn {
+    color: var(--success-green);
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--success-green);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.hero {
+    padding: 100px 5%;
+    max-width: 900px;
+}
+
+.pricing {
+    border: 1px solid var(--border-color);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 12px;
+    margin: 2rem 5%;
+}
+
+.price-display {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.tax-note {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.cta-main {
+    background: var(--text-main);
+    color: var(--bg-dark);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
