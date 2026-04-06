@@ -1,0 +1,10 @@
+# GeoScore India
+> AI Citation Infrastructure for Indian Enterprises.
+
+## Core Services
+- AI Discovery Audit: Analyzes brand perception in LLMs.
+- Citation Injection: Technical SEO for AI agents.
+- DPDP Compliance: Data localization for Indian regulation.
+
+## Pricing (INR)
+- Professional: ₹8,499/mo + GST (UPI/Netbanking support)
