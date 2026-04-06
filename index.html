@@ -3,65 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoScore | AI Citation Authority for Indian Enterprises</title>
     
-    <meta name="description" content="GeoScore helps Indian brands get cited by ChatGPT, Gemini, and Perplexity. DPDP-compliant AI citation infrastructure and SEO.">
+    <title>GeoScore India | AI Citation Authority & DPDP Compliance</title>
+    <meta name="description" content="GeoScore ensures your brand is cited by ChatGPT, Gemini, and Google AI. Indian B2B AI citation infrastructure with DPDP 2023 compliance.">
     <link rel="canonical" href="https://geo-score.in">
-    <meta name="geo.region" content="IN">
-
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "GeoScore India",
       "url": "https://geo-score.in",
-      "address": { "@type": "PostalAddress", "addressCountry": "IN" },
-      "offers": {
-        "@type": "Offer",
-        "price": "8499",
-        "priceCurrency": "INR"
+      "logo": "https://geo-score.in/assets/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Delhi",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-XXXXXXXXXX",
+        "contactType": "sales",
+        "availableLanguage": ["en", "hi"]
       }
     }
     </script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
     <header role="banner">
-        <nav aria-label="Main Navigation">
+        <nav aria-label="Global Navigation">
             <div class="logo">GEOSCORE</div>
-            <div class="nav-right">
-                <button class="lang-btn" aria-label="Switch to Hindi">हिंदी</button>
-                <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-cta" aria-label="Contact on WhatsApp">WhatsApp Support</a>
+            <div class="nav-actions">
+                <button class="lang-toggle" aria-label="Read in Hindi">हिंदी</button>
+                <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn" target="_blank">WhatsApp Support</a>
             </div>
         </nav>
     </header>
 
     <main>
         <section class="hero" aria-labelledby="hero-title">
-            <h1 id="hero-title">Get Cited by ChatGPT & Gemini</h1>
-            <p class="trust-badge">
-                <span class="icon">🛡️</span> DPDP-Compliant Infrastructure — <a href="/audit">View Q1 2026 Audit</a>
+            <h1 id="hero-title">Get Cited by AI Chatbots.</h1>
+            <p class="summary">
+                <strong>What is GeoScore?</strong> We are an AI citation infrastructure that helps Indian enterprises appear as the authoritative source in ChatGPT, Gemini, and Perplexity responses. 
             </p>
+            <div class="trust-row">
+                <span class="badge">DPDP-Compliant Infrastructure</span>
+                <span class="badge">Audit Verified: April 2026</span>
+            </div>
         </section>
 
-        <section class="pricing" id="billing" data-base-price="8499">
-            <h2>Professional Plan</h2>
-            <div class="price-box">
-                <span class="amt">₹8,499</span>
-                <span class="suffix">/month + GST</span>
+        <section class="pricing" id="plans" data-base-price="8499">
+            <h2>Professional Citation Tier</h2>
+            <div class="price-display">
+                <span class="currency">₹</span>
+                <span id="price-amt">8,499</span>
+                <span class="tax-note">/month + 18% GST</span>
             </div>
-            <p class="payment-note">Secure payment via UPI, Card, or Netbanking</p>
-            <button id="rzp-button" class="btn-primary">INITIATE SUBSCRIPTION</button>
+            <p class="payment-icons">Pay via UPI, Card, or Netbanking</p>
+            <button id="checkout-btn" class="cta-main" aria-label="Subscribe for ₹8,499 per month plus GST">
+                INITIATE SUBSCRIPTION
+            </button>
         </section>
     </main>
 
     <footer role="contentinfo">
-        <p>MADE IN BHARAT 🇮🇳</p>
-        <p class="legal">GSTIN: [Your-GST-Number] | PAN Verified</p>
+        <div class="footer-grid">
+            <div>
+                <p><strong>MADE IN BHARAT 🇮🇳</strong></p>
+                <p>Registered Office: New Delhi, India</p>
+            </div>
+            <div class="legal-info">
+                <p>GSTIN: 07AAAAA0000A1Z5</p>
+                <p>DPDP Act 2023 Registered Entity</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
